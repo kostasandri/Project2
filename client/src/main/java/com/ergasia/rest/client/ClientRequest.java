@@ -1,4 +1,4 @@
-package com.ergasia.rest.client;
+ package com.ergasia.rest.client;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -16,39 +16,34 @@ public class ClientRequest {
 	private String ip;
 	private int port;
 	private String uri;
+	private final Client client;
+	private HttpAuthenticationFeature feature; 
 
 	public ClientRequest() {
 		this.ip = PropertyReader.getIp();
 		this.port = Integer.parseInt(PropertyReader.getPort());
 		uri = "http://" + ip + ":" + port + "/server/webapi/resource/";
-		System.out.println("stelnw req edw: " + uri);
+		client = ClientBuilder.newClient();
+		 feature = HttpAuthenticationFeature.basicBuilder().credentials("lazaros", "sarafidis").build();
 	}
 
 	public ClientRequest(String ip, int port) {
 		this.ip = ip;
 		this.port = port;
 		uri = "http://" + ip + ":" + port + "/server/webapi/resource/";
-		System.out.println("stelnw req edw: " + uri);
+		client = ClientBuilder.newClient();
+		HttpAuthenticationFeature.basicBuilder().credentials("lazaros", "sarafidis").build();
 	}
 
-	public void testRequest() {
-		HttpAuthenticationFeature feature = HttpAuthenticationFeature.basicBuilder().credentials("lazaros", "sarafidis").build();
-		System.out.println("piga mexri edw 1");
+	public void createCard() {
 		
-		
-		final Client client = ClientBuilder.newClient();
-		client.register(feature);
-		System.out.println("piga mexri edw 2");
-		
+		client.register(feature); // assigns credentials to client
 		
 		WebTarget target = client.target(uri+"status");
-		System.out.println("piga mexri edw 3");
 		
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
 		Response response = builder.get();
-		//Response response = target.request().get();
-		System.out.println("piga mexri edw 4");
-		
+		//Response response = target.request().get();		
 		
 		System.out.println(response.readEntity(String.class));
 		System.out.println(response);
@@ -60,11 +55,36 @@ public class ClientRequest {
 		 * System.out.println(response.readEntity(String.class));
 		 */
 	}
+	
+	private void updateCard() {
+		client.register(feature); // assigns credentials to client
+		
+		WebTarget target = client.target(uri+"getResp");
+		
+		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
+		Response response = builder.get();	
+		
+		System.out.println(response.readEntity(String.class));
+		System.out.println(response);
+		
+	}
+
+	private void deleteCard() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void readCard() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	public static void main(String[] args) {
 		ClientRequest cr = new ClientRequest();
-		cr.testRequest();
+		cr.createCard();
+		cr.readCard();
+		//cr.deleteCard();
+		//cr.updateCard();
 
 	}
-
 }
