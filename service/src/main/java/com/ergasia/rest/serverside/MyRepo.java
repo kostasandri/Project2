@@ -12,7 +12,7 @@ public class MyRepo {
 	Connection con;
 
 	public MyRepo() {
-		String url = "jdbc:mysql://mysql:3306/items";
+		String url = "jdbc:mysql://mysql:3306/Project2";
 		String username = "Lazaros";
 		String password = "lazaros";
 		try {
@@ -31,17 +31,14 @@ public class MyRepo {
 
 	public ArrayList<String> fetchData() throws Exception {
 		try {
-			System.out.println("fetch 1");
-			String req = "SELECT firstname, lastname FROM MyGuests";
+			String req = "SELECT Firstname, Lastname FROM Clients";
 			PreparedStatement statement = con.prepareStatement(req);
-			System.out.println("fetch 2");
 			ResultSet result = statement.executeQuery();
-			System.out.println("fetch 3");
 			ArrayList<String> array = new ArrayList<String>();
 			while (result.next()) {
-				System.out.println(result.getString("firstname"));
-				array.add(result.getString("firstname"));
-				array.add(result.getString("lastname"));
+				System.out.println(result.getString("Firstname"));
+				array.add(result.getString("Firstname"));
+				array.add(result.getString("Lastname"));
 			}
 			return array;
 

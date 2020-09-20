@@ -26,7 +26,7 @@ public class MyResource {
 	private String queryParamExample;
 
 	@GET
-	@Path("/getResp")
+	@Path("/createCard")
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response getit() {
@@ -39,7 +39,7 @@ public class MyResource {
 	}
 
 	@GET
-	@Path("/status")
+	@Path("/updateCard")
 	public Response getDBStatus() throws Exception {
 		
 		MyRepo mr = new MyRepo();
@@ -47,6 +47,6 @@ public class MyResource {
 		for (String dd : answer) {
 			System.out.println(dd);
 		}
-		return Response.ok(answer.get(0) + answer.get(1)).build();
+		return Response.ok(answer.get(0) + " " +answer.get(1)).build();
 	}
 }

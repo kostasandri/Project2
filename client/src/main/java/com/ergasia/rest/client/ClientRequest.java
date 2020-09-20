@@ -22,7 +22,7 @@ public class ClientRequest {
 	public ClientRequest() {
 		this.ip = PropertyReader.getIp();
 		this.port = Integer.parseInt(PropertyReader.getPort());
-		uri = "http://" + ip + ":" + port + "/server/webapi/resource/";
+		uri = "http://" + ip + ":" + port + "/service/webapi/resource/";
 		client = ClientBuilder.newClient();
 		 feature = HttpAuthenticationFeature.basicBuilder().credentials("lazaros", "sarafidis").build();
 	}
@@ -30,7 +30,7 @@ public class ClientRequest {
 	public ClientRequest(String ip, int port) {
 		this.ip = ip;
 		this.port = port;
-		uri = "http://" + ip + ":" + port + "/server/webapi/resource/";
+		uri = "http://" + ip + ":" + port + "/service/webapi/resource/";
 		client = ClientBuilder.newClient();
 		HttpAuthenticationFeature.basicBuilder().credentials("lazaros", "sarafidis").build();
 	}

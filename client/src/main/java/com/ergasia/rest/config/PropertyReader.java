@@ -19,7 +19,7 @@ public class PropertyReader {
 
 	private static void getProperties() {
 		Properties prop = loadPropertyFile();
-		ip = getDefaultValueIfNull(prop.getProperty("ip"), "192.168.1.111");
+		ip = getDefaultValueIfNull(prop.getProperty("hostname"), "192.168.1.111");
 		port = getDefaultValueIfNull(prop.getProperty("port"), "8080");
 
 	}
