@@ -6,6 +6,8 @@ services:
                        - /var/lib/mysql:/var/lib/mysql
                 container_name: mysql
                 working_dir: /mysql
+                networks: 
+                        - backend
         service:
                 build:
                         dockerfile: Dockerfile_service
@@ -15,3 +17,12 @@ services:
                         - mysql
                 ports:
                         - "8080:8080"
+                networks: 
+                        - backend
+                        - frontend
+
+networks: 
+        frontend:
+
+        backend:
+
