@@ -12,9 +12,9 @@ public class MyRepo {
 	Connection con;
 
 	public MyRepo() {
-		String url = "jdbc:mysql://192.168.1.111:3306/testdb";
-		String username = "myuser";
-		String password = "toor";
+		String url = "jdbc:mysql://mysql:3306/items";
+		String username = "Lazaros";
+		String password = "lazaros";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, username, password);
