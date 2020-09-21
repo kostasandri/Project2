@@ -1,2 +1,3 @@
 #!/bin/bash
-echo Hello;
+docker-compose build
+docker-compose up
