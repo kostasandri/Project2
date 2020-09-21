@@ -36,6 +36,7 @@ public class MyRepo {
 			ResultSet result = statement.executeQuery();
 			System.out.println(result.getFetchSize());
 			System.out.println(result.getFetchSize());
+			System.out.println(result.toString());
 			return 7;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
