@@ -65,7 +65,7 @@ public class MyRepo {
 
 	public static void createEmptyCard(int oID, int cID) { // order ID, client ID
 		try {
-			String sql = "insert into alien values (?,?)";
+			String sql = "INSERT INTO Orders values (?,?)";
 			
 				PreparedStatement st = con.prepareStatement(sql);
 				st.setInt(1, oID);
