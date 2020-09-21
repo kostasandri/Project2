@@ -25,8 +25,8 @@ public class TempStore {
 		for(Card c : cards) {
 			if(c.getOrderID() == oID) 
 			{
-				return c;
 				System.out.println("in getCard");
+				return c;			
 			}
 		}
 		return null;
