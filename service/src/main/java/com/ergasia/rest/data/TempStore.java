@@ -3,8 +3,6 @@ package com.ergasia.rest.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 public class TempStore {
 	
 	private static List<Card> cards;
