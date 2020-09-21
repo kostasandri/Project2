@@ -46,6 +46,6 @@ public class MyResource {
 		for (String dd : answer) {
 			System.out.println(dd);
 		}
-		return Response.ok(answer.get(0) + " ++ " +answer.get(1)).build();
+		return Response.ok(answer.get(0) + " +++ " +answer.get(1)).build();
 	}
 }

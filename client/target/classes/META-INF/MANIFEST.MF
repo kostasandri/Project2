@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Class-Path: lib/jersey-client-2.28.jar lib/jakarta.ws.rs-api-2.1.5.jar
+  lib/jakarta.inject-2.5.0.jar lib/jersey-hk2-2.28.jar lib/hk2-locator
+ -2.5.0.jar lib/aopalliance-repackaged-2.5.0.jar lib/hk2-api-2.5.0.jar
+  lib/hk2-utils-2.5.0.jar lib/javassist-3.22.0-CR2.jar lib/jersey-comm
+ on-2.28.jar lib/jakarta.annotation-api-1.3.4.jar lib/osgi-resource-lo
+ cator-1.0.1.jar lib/jersey-media-moxy-2.28.jar lib/jersey-entity-filt
+ ering-2.28.jar lib/jakarta.json-api-1.1.5.jar lib/jakarta.json-1.1.5.
+ jar lib/org.eclipse.persistence.moxy-2.7.4.jar lib/org.eclipse.persis
+ tence.core-2.7.4.jar lib/org.eclipse.persistence.asm-2.7.4.jar lib/ja
+ vax.ws.rs-api-2.1.jar lib/javax.inject-1.jar
+Build-Jdk-Spec: 1.8
+Created-By: Maven Integration for Eclipse
+Main-Class: com.ergasia.rest.client.ClientRequest
+
