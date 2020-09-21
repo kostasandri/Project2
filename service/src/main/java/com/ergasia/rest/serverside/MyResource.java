@@ -34,7 +34,7 @@ public class MyResource {
 			logger.debug("if debug");
 		}
 		logger.info("info");
-		return Response.ok("got itss").build();
+		return Response.ok("got itsi").build();
 	}
 
 	@GET
