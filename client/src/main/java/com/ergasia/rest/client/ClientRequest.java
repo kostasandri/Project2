@@ -39,7 +39,7 @@ public class ClientRequest {
 		
 		client.register(feature); // assigns credentials to client
 		
-		WebTarget target = client.target(uri+"status");
+		WebTarget target = client.target(uri+"createCard");
 		
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
 		Response response = builder.get();
@@ -59,7 +59,7 @@ public class ClientRequest {
 	private void updateCard() {
 		client.register(feature); // assigns credentials to client
 		
-		WebTarget target = client.target(uri+"getResp");
+		WebTarget target = client.target(uri+"updateCard");
 		
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
 		Response response = builder.get();	
@@ -82,9 +82,9 @@ public class ClientRequest {
 	public static void main(String[] args) {
 		ClientRequest cr = new ClientRequest();
 		cr.createCard();
-		cr.readCard();
+		//cr.readCard();
 		//cr.deleteCard();
-		//cr.updateCard();
+		cr.updateCard();
 
 	}
 }
