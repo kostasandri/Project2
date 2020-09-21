@@ -43,9 +43,9 @@ public class MyResource {
 	@GET
 	@Path("/getCard/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-	public Card getit(@PathParam("id") int oID) {
+	public String getit(@PathParam("id") int oID) {
 		System.out.println("Order ID is "+ oID);
-		return TempStore.getCard(oID);
+		return TempStore.getCard(oID).toString();
 	}
 
 	@GET
