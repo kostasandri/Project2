@@ -17,7 +17,7 @@ public class Card {
 	public Card(int ClientID) {
 		this.ClientID=ClientID;
 		this.setOrderID(MyRepo.getOrdersTotalRows() + 1);
-		products = new ArrayList<>();
+		products = new ArrayList<Product>();
 		MyRepo.createEmptyCard(OrderID, ClientID);
 	}
 

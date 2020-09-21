@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
 public class TempStore {
 	
 	private static List<Card> cards;
@@ -27,6 +26,7 @@ public class TempStore {
 			if(c.getOrderID() == oID) 
 			{
 				return c;
+				System.out.println("in getCard");
 			}
 		}
 		return null;
