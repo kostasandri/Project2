@@ -36,6 +36,22 @@ public class Card {
 	public void setOrderID(int orderID) {
 		OrderID = orderID;
 	}
+	
+	public int getClientID() {
+		return ClientID;
+	}
+
+	public void setClientID(int clientID) {
+		ClientID = clientID;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 
 	@Override
 	public String toString() {
