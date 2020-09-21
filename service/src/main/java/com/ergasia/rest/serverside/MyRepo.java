@@ -35,6 +35,9 @@ public class MyRepo {
 			String req = "SELECT OrderID FROM Orders;";
 			PreparedStatement statement = con.prepareStatement(req);
 			ResultSet result = statement.executeQuery();
+			result.next();
+			String total = result.getString(1);
+			System.out.println(total);
 			System.out.println(result.getFetchSize());
 			System.out.println(result.getFetchSize());
 			System.out.println(result.toString());
