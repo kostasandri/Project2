@@ -34,7 +34,7 @@ public class MyRepo {
 		try {
 			PreparedStatement statement = con.prepareStatement(req);
 			ResultSet result = statement.executeQuery();
-			System.out.println(result);
+			System.out.println(result.getRow());
 			return 7;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
