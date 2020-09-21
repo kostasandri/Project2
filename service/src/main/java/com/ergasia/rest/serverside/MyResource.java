@@ -1,10 +1,13 @@
 package com.ergasia.rest.serverside;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.inject.Singleton;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -23,19 +26,27 @@ import com.ergasia.rest.data.Card;
 public class MyResource {
 
 	Logger logger = LogManager.getLogger(MyResource.class);
-
+	List<Card> cards = new ArrayList<Card>();
 	@QueryParam("query")
 	private String queryParamExample;
 
 	@GET
 	@Path("/createCard")
-	@Consumes(MediaType.TEXT_PLAIN)
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response getit(@QueryParam("client") int client) {
+	@Singleton
+	public Response createCard(@QueryParam("client") int client) {
 		System.out.println("Client "+ client);
 		Card c = new Card(client);
 		c.addProduct(65, "kokkino");
+		cards.add(c);
 		return Response.ok("Card created with ID: " + c.getOrderID() + "!").build();
+	}
+	
+	@GET
+	@Path("/getCard/{id}")
+	@Produces(MediaType.APPLICATION_XML)
+	public Card getit(@PathParam("id") int oID) {
+		
+		return cards.get(oID);
 	}
 
 	@GET

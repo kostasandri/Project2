@@ -3,8 +3,11 @@ package com.ergasia.rest.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.ergasia.rest.serverside.MyRepo;
 
+@XmlRootElement
 public class Card {
 
 	private int OrderID;
@@ -29,4 +32,10 @@ public class Card {
 	public void setOrderID(int orderID) {
 		OrderID = orderID;
 	}
+
+	@Override
+	public String toString() {
+		return "Card [OrderID=" + OrderID + ", ClientID=" + ClientID + ", products=" + products + "]";
+	}
+	
 }
