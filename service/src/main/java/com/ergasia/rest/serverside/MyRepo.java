@@ -35,6 +35,7 @@ public class MyRepo {
 			String req = "SELECT count(*) FROM Orders;";
 			PreparedStatement statement = con.prepareStatement(req);
 			ResultSet result = statement.executeQuery();
+			result.next();
 			System.out.println(result.getString(1));
 			return 7;
 		} catch (SQLException e) {
