@@ -34,8 +34,7 @@ public class MyRepo {
 		try {
 			PreparedStatement statement = con.prepareStatement(req);
 			ResultSet result = statement.executeQuery();
-			//System.out.println(result.getString("count(*)"));
-			//System.out.println(result.getHoldability());
+			System.out.println(result.getFetchSize());
 			System.out.println(result.getFetchSize());
 			return 7;
 		} catch (SQLException e) {
