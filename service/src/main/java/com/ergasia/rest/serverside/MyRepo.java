@@ -30,7 +30,7 @@ public class MyRepo {
 	}
 
 	public static int getOrdersTotalRows() {
-		String req = "SELECT * FROM Orders;";
+		String req = "SELECT OrderID FROM Orders;";
 		try {
 			PreparedStatement statement = con.prepareStatement(req);
 			ResultSet result = statement.executeQuery();
