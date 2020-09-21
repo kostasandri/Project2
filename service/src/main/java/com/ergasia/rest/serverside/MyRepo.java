@@ -62,4 +62,16 @@ public class MyRepo {
 		}
 		return null;
 	}
+
+	public static void createEmptyCard(int id) {
+		try {
+			String req = "INSERT INTO Orders (OrderID, OrderNumber, ClientID) VALUES (\""+id+"\", \"1\", \"5\");";
+			PreparedStatement statement = con.prepareStatement(req);
+			ResultSet result = statement.executeQuery();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
 }

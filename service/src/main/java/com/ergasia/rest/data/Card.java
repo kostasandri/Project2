@@ -13,6 +13,7 @@ public class Card {
 	public Card() {
 		this.setOrderID(MyRepo.getOrdersTotalRows() + 1);
 		products = new ArrayList<>();
+		MyRepo.createEmptyCard(OrderID);
 	}
 
 	public void addProduct(int itemID, String colour) {
