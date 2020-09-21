@@ -20,7 +20,6 @@ services:
                         - frontend
                 ports: 
                         - 8181:8080
-
 networks: 
         frontend:
 
