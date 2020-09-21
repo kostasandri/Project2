@@ -13,6 +13,8 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.ergasia.rest.data.Card;
+
 /**
  * Root resource (exposed at "myresource" path)
  */
@@ -30,10 +32,8 @@ public class MyResource {
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response getit() {
-		if(logger.isDebugEnabled()) {
-			logger.debug("if debug");
-		}
-		logger.info("info");
+		Card c = new Card();
+		c.addProduct(65, "kokkino");
 		return Response.ok("got itsi").build();
 	}
 
