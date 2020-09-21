@@ -1,2 +1,2 @@
 #!/bin/bash
-./script1.sh
+./home/konstantinos/Documents/Project2/script1.sh
