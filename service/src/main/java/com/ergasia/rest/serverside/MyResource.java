@@ -26,7 +26,7 @@ import com.ergasia.rest.data.Card;
 public class MyResource {
 
 	Logger logger = LogManager.getLogger(MyResource.class);
-	List<Card> cards = new ArrayList<Card>();
+	List<Card> cards; 
 	@QueryParam("query")
 	private String queryParamExample;
 
@@ -34,6 +34,7 @@ public class MyResource {
 	@Path("/createCard")
 	@Singleton
 	public Response createCard(@QueryParam("client") int client) {
+		cards = new ArrayList<Card>();
 		System.out.println("Client "+ client);
 		Card c = new Card(client);
 		c.addProduct(65, "kokkino");
