@@ -8,12 +8,14 @@ import com.ergasia.rest.serverside.MyRepo;
 public class Card {
 
 	private int OrderID;
+	private int ClientID;
 	private List<Product> products;
 
-	public Card() {
+	public Card(int ClientID) {
+		this.ClientID=ClientID;
 		this.setOrderID(MyRepo.getOrdersTotalRows() + 1);
 		products = new ArrayList<>();
-		MyRepo.createEmptyCard(OrderID);
+		MyRepo.createEmptyCard(OrderID, ClientID);
 	}
 
 	public void addProduct(int itemID, String colour) {

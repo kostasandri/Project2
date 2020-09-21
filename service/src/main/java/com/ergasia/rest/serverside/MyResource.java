@@ -31,8 +31,9 @@ public class MyResource {
 	@Path("/createCard")
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response getit() {
-		Card c = new Card();
+	public Response getit(@QueryParam("client") int client) {
+		System.out.println("Client "+ client);
+		Card c = new Card(client);
 		c.addProduct(65, "kokkino");
 		return Response.ok("Card created with ID: " + c.getOrderID() + "!").build();
 	}

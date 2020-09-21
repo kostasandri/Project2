@@ -63,11 +63,14 @@ public class MyRepo {
 		return null;
 	}
 
-	public static void createEmptyCard(int id) {
+	public static void createEmptyCard(int oID, int cID) { // order ID, client ID
 		try {
-			String req = "INSERT INTO Orders (OrderID, OrderNumber, ClientID) VALUES (\""+id+"\", \"1\", \"5\");";
-			PreparedStatement statement = con.prepareStatement(req);
-			ResultSet result = statement.executeQuery();
+			String sql = "insert into alien values (?,?,?)";
+			
+				PreparedStatement st = con.prepareStatement(sql);
+				st.setInt(1, oID);
+				st.setInt(2, cID);
+				st.execute();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
