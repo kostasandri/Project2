@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 public class MyRepo {
 
-	Connection con;
+	static Connection con;
 
-	public MyRepo() {
+	static {
 		String url = "jdbc:mysql://mysql:3306/Project2";
 		String username = "Lazaros";
 		String password = "lazaros";
@@ -27,6 +27,20 @@ public class MyRepo {
 			System.out.println(e);
 			e.printStackTrace();
 		}
+	}
+
+	public static int getOrdersTotalRows() {
+		String req = "SELECT COUNT(*) FROM Orders;";
+		try {
+			PreparedStatement statement = con.prepareStatement(req);
+			ResultSet result = statement.executeQuery();
+			System.out.println(result);
+			return 7;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 	public ArrayList<String> fetchData() throws Exception {
