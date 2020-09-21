@@ -13,6 +13,10 @@ public class Card {
 	private int OrderID;
 	private int ClientID;
 	private List<Product> products;
+	
+	public Card() {
+		
+	}
 
 	public Card(int ClientID) {
 		this.ClientID=ClientID;
