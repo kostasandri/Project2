@@ -35,12 +35,7 @@ public class MyRepo {
 			String req = "SELECT count(*) FROM Orders;";
 			PreparedStatement statement = con.prepareStatement(req);
 			ResultSet result = statement.executeQuery();
-			result.next();
-			String total = result.getString(1);
-			System.out.println(total);
-			System.out.println(result.getFetchSize());
-			System.out.println(result.getFetchSize());
-			System.out.println(result.toString());
+			System.out.println(result.getString(1));
 			return 7;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
