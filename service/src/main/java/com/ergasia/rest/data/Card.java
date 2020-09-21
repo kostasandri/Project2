@@ -12,18 +12,19 @@ public class Card {
 
 	private int OrderID;
 	private int ClientID;
-	private List<Product> products;
+	//private List<Product> products;
 
 	public Card(int ClientID) {
 		this.ClientID=ClientID;
 		this.setOrderID(MyRepo.getOrdersTotalRows() + 1);
-		products = new ArrayList<Product>();
+		//products = new ArrayList<Product>();
 		MyRepo.createEmptyCard(OrderID, ClientID);
 	}
 
-	public void addProduct(int itemID, String colour) {
-		products.add(new Product(itemID, colour));
-	}
+	/*
+	 * public void addProduct(int itemID, String colour) { products.add(new
+	 * Product(itemID, colour)); }
+	 */
 
 	public int getOrderID() {
 		return OrderID;
@@ -35,7 +36,7 @@ public class Card {
 
 	@Override
 	public String toString() {
-		return "Card [OrderID=" + OrderID + ", ClientID=" + ClientID + ", products=" + products + "]";
+		return "Card [OrderID=" + OrderID + ", ClientID=" + ClientID + /* ", products=" + products + */ "]";
 	}
 	
 }
