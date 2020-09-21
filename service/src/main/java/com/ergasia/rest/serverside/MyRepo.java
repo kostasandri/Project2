@@ -36,8 +36,7 @@ public class MyRepo {
 			PreparedStatement statement = con.prepareStatement(req);
 			ResultSet result = statement.executeQuery();
 			result.next();
-			System.out.println(result.getString(1));
-			return 7;
+			return Integer.parseInt(result.getString(1));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
