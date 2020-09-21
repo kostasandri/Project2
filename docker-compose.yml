@@ -11,7 +11,7 @@ services:
         service:
                 build:
                         dockerfile: Dockerfile_service
-                        context: $HOME/Documents/Project2/
+                        context: $JENKINS_HOME/workspace/Project2/
                 container_name: service
                 depends_on:
                         - mysql
