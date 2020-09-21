@@ -11,11 +11,19 @@ public class Card {
 	private List<Product> products;
 
 	public Card() {
-		this.OrderID = MyRepo.getOrdersTotalRows();
+		this.setOrderID(MyRepo.getOrdersTotalRows() + 1);
 		products = new ArrayList<>();
 	}
 
 	public void addProduct(int itemID, String colour) {
 		products.add(new Product(itemID, colour));
+	}
+
+	public int getOrderID() {
+		return OrderID;
+	}
+
+	public void setOrderID(int orderID) {
+		OrderID = orderID;
 	}
 }

@@ -34,18 +34,18 @@ public class MyResource {
 	public Response getit() {
 		Card c = new Card();
 		c.addProduct(65, "kokkino");
-		return Response.ok("Card created!").build();
+		return Response.ok("Card created with ID: " + c.getOrderID() + "!").build();
 	}
 
 	@GET
 	@Path("/updateCard")
 	public Response getDBStatus() throws Exception {
-		
+
 		MyRepo mr = new MyRepo();
 		ArrayList<String> answer = mr.fetchData();
 		for (String dd : answer) {
 			System.out.println(dd);
 		}
-		return Response.ok(answer.get(0) + " +++ " +answer.get(1)).build();
+		return Response.ok(answer.get(0) + " +++ " + answer.get(1)).build();
 	}
 }
