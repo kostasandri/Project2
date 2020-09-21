@@ -34,7 +34,7 @@ public class MyResource {
 	public Response getit() {
 		Card c = new Card();
 		c.addProduct(65, "kokkino");
-		return Response.ok("got itsi").build();
+		return Response.ok("Card created!").build();
 	}
 
 	@GET
