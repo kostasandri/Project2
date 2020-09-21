@@ -17,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.ergasia.rest.data.Card;
+import com.ergasia.rest.data.TempStore;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -26,19 +27,16 @@ import com.ergasia.rest.data.Card;
 public class MyResource {
 
 	Logger logger = LogManager.getLogger(MyResource.class);
-	List<Card> cards; 
 	@QueryParam("query")
 	private String queryParamExample;
 
 	@GET
 	@Path("/createCard")
-	@Singleton
 	public Response createCard(@QueryParam("client") int client) {
-		cards = new ArrayList<Card>();
 		System.out.println("Client "+ client);
 		Card c = new Card(client);
 		c.addProduct(65, "kokkino");
-		cards.add(c);
+		TempStore.addCard(c);
 		return Response.ok("Card created with ID: " + c.getOrderID() + "!").build();
 	}
 	
@@ -46,9 +44,8 @@ public class MyResource {
 	@Path("/getCard/{id}")
 	@Produces(MediaType.APPLICATION_XML)
 	public Card getit(@PathParam("id") int oID) {
-		System.out.println("cards are "+ cards.size());
 		System.out.println("Order ID is "+ oID);
-		return cards.get(oID);
+		return TempStore.getCard(oID);
 	}
 
 	@GET
