@@ -101,7 +101,7 @@ public class MyRepo {
 
 			if (current_quantity >= quantity && current_quantity>=quantity) {
 				String req2 = "UPDATE ItemInfo SET LQuantity=? WHERE InfoID=? AND colour=?; ";
-				System.out.println(req2);
+				System.out.println("req 2 "+ req2);
 
 				PreparedStatement statement = con.prepareStatement(req2);
 				if(currentItemQuantity==0) {
