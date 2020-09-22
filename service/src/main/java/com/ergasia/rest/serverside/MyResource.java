@@ -17,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.ergasia.rest.data.Card;
+import com.ergasia.rest.data.Product;
 import com.ergasia.rest.data.TempStore;
 
 /**
@@ -35,20 +36,36 @@ public class MyResource {
 		TempStore.addCard(c);
 		return Response.ok("Card created with ID: " + c.getOrderID() + "!").build();
 	}
-	
+
 	@GET
 	@Path("/getCard/{id}")
 	@Produces(MediaType.APPLICATION_XML)
 	public Card getit(@PathParam("id") int oID) {
-		System.out.println("Order ID is "+ oID);
+		System.out.println("Order ID is " + oID);
 		return TempStore.getCard(oID);
 	}
 
 	@GET
 	@Path("/updateCard/{oID}/item/{iID}")
-	public Response updateCard(@PathParam("iID") int iID, @PathParam("oID") int oID, @QueryParam("colour") String colour, @QueryParam("quantity") int quantity) throws Exception {
+	public Response updateCard(@PathParam("iID") int iID, @PathParam("oID") int oID,
+			@QueryParam("colour") String colour, @QueryParam("quantity") int quantity) throws Exception {
+
+		int flag = 0; // flag gia to ean iparxei i oxi to proion
 
 		Card c = TempStore.getCard(oID);
+		for (Product p : c.getProducts()) {
+			if (p.getItemID() == iID && p.getColour().equals(colour)) { // ean to proion iparxei idi stin karta. iparxei
+																		// simainei na einai idios kwdikos kai idio
+																		// xrwma
+				p.setQuantity(p.getQuantity() + quantity);
+				flag = 1;
+			}
+		}
+
+		if (flag == 0) {
+			c.addProduct(iID, colour, quantity);
+		}
+
 		c.addProduct(iID, colour, quantity);
 
 		return Response.ok("Product with item ID " + iID + " added.").build();
