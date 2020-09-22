@@ -84,14 +84,15 @@ public class MyRepo {
 	
 	public static void updateItemQuantity(int quantity, int infoID, String colour) throws Exception {
 		try {
+			
+			System.out.println("at least i'm here");
 			String req = "UPDATE ItemInfo SET quantity=? WHERE InfoID=? AND colour=?; ";
 			
 			PreparedStatement statement = con.prepareStatement(req);
 			statement.setInt(1, quantity);
 			statement.setInt(2, infoID);
 			statement.setString(3, colour);
-			System.out.println(statement);
-			statement.execute();
+			statement.executeUpdate();
 
 		} catch (Exception e) {
 			System.out.println(e);
