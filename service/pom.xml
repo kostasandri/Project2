@@ -39,6 +39,12 @@
 	</dependencyManagement>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server -->
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet-core</artifactId>
