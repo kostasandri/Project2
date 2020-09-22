@@ -29,7 +29,7 @@ public class MyResource {
 	Logger logger = LogManager.getLogger(MyResource.class);
 
 	@GET
-	@Path("client/{cid}/createCard")
+	@Path("client/{cID}/createCard")
 	public Response createCard(@PathParam("cID") int cID) {
 		Card c = new Card(cID);
 		TempStore.addCard(c);
