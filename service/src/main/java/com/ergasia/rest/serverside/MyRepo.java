@@ -120,7 +120,7 @@ public class MyRepo {
 				statement.executeUpdate();
 				return true;
 			} else {
-				throw new quantityException("Quantity remaining is " + current_quantity);
+				throw new quantityException("Quantity remaining is: " + current_quantity);
 			}
 
 		} catch (Exception e) {
