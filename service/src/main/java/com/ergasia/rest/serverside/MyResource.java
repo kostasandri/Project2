@@ -31,6 +31,7 @@ public class MyResource {
 	Logger logger = LogManager.getLogger(MyResource.class);
 
 	@GET
+	@Consumes(MediaType.TEXT_PLAIN)
 	@Path("client/{cID}/createCard")
 	public Response createCard(@PathParam("cID") int cID) {
 		Card c = new Card(cID);
@@ -39,6 +40,7 @@ public class MyResource {
 	}
 
 	@GET
+	@Consumes(MediaType.TEXT_PLAIN)
 	@Path("/getCard/{id}")
 	@Produces(MediaType.APPLICATION_XML)
 	public Card getCard(@PathParam("id") int oID) {
@@ -47,6 +49,7 @@ public class MyResource {
 	}
 
 	@GET
+	@Consumes(MediaType.TEXT_PLAIN)
 	@Path("/updateCard/{oID}/item/{iID}")
 	public Response updateCard(@PathParam("iID") int iID, @PathParam("oID") int oID,
 			@QueryParam("colour") String colour, @QueryParam("quantity") int quantity) throws Exception {
@@ -99,10 +102,15 @@ public class MyResource {
 	
 	@GET
 	@Path("/resetCard/{id}")
-	@Produces(MediaType.APPLICATION_XML)
+	@Consumes(MediaType.TEXT_PLAIN)
 	public Card resetCard(@PathParam("id") int oID) {
 		TempStore.getCard(oID).reset();
 		return TempStore.getCard(oID);
 	}
 	
+	@GET
+	@Path("/history")
+	public List<Card> history(@PathParam("id") int oID) {
+		return TempStore.getCards();
+	}
 }
