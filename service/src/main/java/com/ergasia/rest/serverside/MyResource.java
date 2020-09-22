@@ -41,7 +41,7 @@ public class MyResource {
 	@GET
 	@Path("/getCard/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-	public Card getit(@PathParam("id") int oID) {
+	public Card getCard(@PathParam("id") int oID) {
 		System.out.println("Order ID is " + oID);
 		return TempStore.getCard(oID);
 	}
@@ -96,4 +96,13 @@ public class MyResource {
 
 		return Response.ok("Product with item ID " + iID + " updated.").build();
 	}
+	
+	@GET
+	@Path("/resetCard/{id}")
+	@Produces(MediaType.APPLICATION_XML)
+	public Card resetCard(@PathParam("id") int oID) {
+		TempStore.getCard(oID).reset();
+		return TempStore.getCard(oID);
+	}
+	
 }

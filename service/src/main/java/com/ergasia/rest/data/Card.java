@@ -77,4 +77,12 @@ public class Card {
 		Card.totalCards = totalCards;
 	}
 
+	public void reset() {
+		for(Product p : products) {		
+			MyRepo.updateItemQuantity(p.getQuantity(), 0, p.getItemID(), p.getColour());
+			p.setQuantity(0);
+		}
+		
+	}
+
 }
