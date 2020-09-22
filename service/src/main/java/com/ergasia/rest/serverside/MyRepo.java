@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.ergasia.rest.data.Card;
 import com.ergasia.rest.data.TempStore;
@@ -98,7 +99,7 @@ public class MyRepo {
 			int current_quantity = Integer.parseInt(result.getString(1));
 
 			if (current_quantity >= quantity && current_quantity>=quantity) {
-				String req2 = "UPDATE ItemInfo SET quantity=? WHERE InfoID=? AND colour=?; ";
+				String req2 = "UPDATE ItemInfo SET LeftQuantity=? WHERE InfoID=? AND colour=?; ";
 
 				PreparedStatement statement = con.prepareStatement(req2);
 				if(currentItemQuantity==0) {
@@ -141,5 +142,10 @@ public class MyRepo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public static List<Card> getHistory() {
+
+		return null;
 	}
 }
