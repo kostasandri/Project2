@@ -88,7 +88,7 @@ public class MyRepo {
 
 	public static boolean updateItemQuantity(int currentItemQuantity, int quantity, int itemID, String colour) {
 		try {
-
+			
 			String req1 = "SELECT quantity FROM ItemInfo WHERE InfoID=? AND colour=? ;";
 			PreparedStatement st1 = con.prepareStatement(req1);
 			st1.setInt(1, itemID);

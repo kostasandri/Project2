@@ -19,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 import com.ergasia.rest.data.Card;
 import com.ergasia.rest.data.Product;
 import com.ergasia.rest.data.TempStore;
+import com.ergasia.rest.exception.bigQuantityException;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -51,6 +52,10 @@ public class MyResource {
 			@QueryParam("colour") String colour, @QueryParam("quantity") int quantity) throws Exception {
 
 		boolean executed;
+
+		if (quantity > 50 || quantity < 0) {
+			throw new bigQuantityException("Too big or negative quantity.");
+		}
 
 		if (logger.isDebugEnabled()) {
 			logger.debug("Order id " + oID + ", itemID " + iID + ", colour " + colour + ", quantity " + quantity);
