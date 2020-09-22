@@ -66,8 +66,8 @@ public class MyResource {
 					flag = 1;
 					break;
 				} else {
+					MyRepo.updateItemQuantity(p.getQuantity(),quantity, iID, colour);
 					p.setQuantity(quantity);
-					MyRepo.updateItemQuantity(quantity, iID, colour);
 					flag = 1;
 					break;
 				}				
@@ -76,7 +76,7 @@ public class MyResource {
 
 		if (flag == 0) {
 			c.addProduct(iID, colour, quantity);
-			MyRepo.updateItemQuantity(quantity, iID, colour);
+			MyRepo.updateItemQuantity(0 ,quantity, iID, colour);
 		}
 
 		return Response.ok("Product with item ID " + iID + " updated.").build();
