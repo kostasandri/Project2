@@ -32,7 +32,7 @@ CREATE TABLE SumOrder
 CREATE TABLE ItemInfo
 (
     InfoID INT NOT NULL ,
-    LeftQuantity INT NOT NULL,
+    LQuantity INT NOT NULL,
     colour VARCHAR(30) NOT NULL,
     PRIMARY KEY (InfoID, colour)
 );

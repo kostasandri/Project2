@@ -21,10 +21,10 @@ INSERT INTO SumOrder (OrderID, ItemID, Quantity) VALUES ("3", "1", "10");
 INSERT INTO SumOrder (OrderID, ItemID, Quantity) VALUES ("4", "3", "10");
 INSERT INTO SumOrder (OrderID, ItemID, Quantity) VALUES ("5", "2", "10");
 
-INSERT INTO ItemInfo (InfoID, LeftQuantity, colour) VALUES ("1", "3", "kokkino");
-INSERT INTO ItemInfo (InfoID, LeftQuantity, colour) VALUES ("1", "2", "prasino");
-INSERT INTO ItemInfo (InfoID, LeftQuantity, colour) VALUES ("3", "2", "mple");
-INSERT INTO ItemInfo (InfoID, LeftQuantity, colour) VALUES ("2", "2", "mple");
+INSERT INTO ItemInfo (InfoID, LQuantity, colour) VALUES ("1", "3", "kokkino");
+INSERT INTO ItemInfo (InfoID, LQuantity, colour) VALUES ("1", "2", "prasino");
+INSERT INTO ItemInfo (InfoID, LQuantity, colour) VALUES ("3", "2", "mple");
+INSERT INTO ItemInfo (InfoID, LQuantity, colour) VALUES ("2", "2", "mple");
 
 INSERT INTO Items (ItemName, Price, ItemInfo) VALUES ("Mplouza", "30.0", "1");
 INSERT INTO Items (ItemName, Price, ItemInfo) VALUES ("Panteloni", "40.0", "3");
