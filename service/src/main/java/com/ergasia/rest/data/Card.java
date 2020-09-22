@@ -22,6 +22,7 @@ public class Card {
 	public Card(int ClientID) {
 		this.ClientID=ClientID;
 		totalCards = totalCards ++;
+		this.setOrderID(totalCards);
 		products = new ArrayList<Product>();
 	}
 
