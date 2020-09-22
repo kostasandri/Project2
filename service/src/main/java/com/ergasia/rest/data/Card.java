@@ -39,6 +39,7 @@ public class Card {
 		for (Product p : products) {
 			if (p.getItemID() == itemID) {
 				products.remove(counter);
+				break;
 			}
 			counter++;
 		}
