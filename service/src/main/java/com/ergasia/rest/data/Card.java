@@ -20,10 +20,10 @@ public class Card {
 	}
 
 	public Card(int ClientID) {
-		if (totalCards == 0)
+		if (getTotalCards() == 0)
 			setTotalCards(MyRepo.getOrdersTotalRows() + 1);
 		else
-			setTotalCards(totalCards++);
+			setTotalCards(getTotalCards()+1);
 
 		this.ClientID = ClientID;
 		this.setOrderID(getTotalCards());
