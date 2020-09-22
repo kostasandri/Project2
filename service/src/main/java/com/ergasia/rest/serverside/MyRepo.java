@@ -44,7 +44,7 @@ public class MyRepo {
 		return -1;
 	}
 
-	public ArrayList<String> fetchData() throws Exception {
+	public ArrayList<String> fetchClient() throws Exception {
 		try {
 			String req = "SELECT Firstname, Lastname FROM Clients";
 			PreparedStatement statement = con.prepareStatement(req);
@@ -61,6 +61,40 @@ public class MyRepo {
 			System.out.println(e);
 		}
 		return null;
+	}
+	
+	public ArrayList<String> fetchItem() throws Exception {
+		try {
+			String req = "SELECT Firstname, Lastname FROM Clients";
+			PreparedStatement statement = con.prepareStatement(req);
+			ResultSet result = statement.executeQuery();
+			ArrayList<String> array = new ArrayList<String>();
+			while (result.next()) {
+				System.out.println(result.getString("Firstname"));
+				array.add(result.getString("Firstname"));
+				array.add(result.getString("Lastname"));
+			}
+			return array;
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	public static void updateItemQuantity(int quantity, int infoID, String colour) throws Exception {
+		try {
+			String req = "UPDATE ItemInfo SET quantity=? WHERE InfoID=? AND colour=?; ";
+			
+			PreparedStatement statement = con.prepareStatement(req);
+			statement.setInt(1, quantity);
+			statement.setInt(2, infoID);
+			statement.setString(3, colour);
+			statement.execute();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 
 	public static void createEmptyCard(int oID, int cID) { // order ID, client ID

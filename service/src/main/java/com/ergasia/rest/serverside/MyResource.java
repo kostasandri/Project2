@@ -63,10 +63,10 @@ public class MyResource {
 					break;
 				} else {
 					p.setQuantity(quantity);
+					MyRepo.updateItemQuantity(quantity, iID, colour);
 					flag = 1;
 					break;
-				}
-				
+				}				
 			}
 		}
 
