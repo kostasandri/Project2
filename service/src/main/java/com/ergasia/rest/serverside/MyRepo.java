@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.ergasia.rest.exception.quantityException;
+
 public class MyRepo {
 
 	static Connection con;
@@ -82,17 +84,30 @@ public class MyRepo {
 		return null;
 	}
 	
-	public static void updateItemQuantity(int quantity, int infoID, String colour) throws Exception {
+	public static void updateItemQuantity(int quantity, int infoID, String colour){
 		try {
 			
-			System.out.println("at least i'm here");
-			String req = "UPDATE ItemInfo SET quantity=? WHERE InfoID=? AND colour=?; ";
+			String req1 = "SELECT quantity FROM ItemInfo WHERE InfoID=? AND colour=? ;";
+			PreparedStatement st1 = con.prepareStatement(req1);
+			st1.setInt(1, infoID);
+			st1.setNString(2, colour);
+			ResultSet result = st1.executeQuery();
+			result.next();
+			int current_quantity = Integer.parseInt(result.getString(1));
 			
-			PreparedStatement statement = con.prepareStatement(req);
-			statement.setInt(1, quantity);
-			statement.setInt(2, infoID);
-			statement.setString(3, colour);
-			statement.executeUpdate();
+			if(current_quantity >= quantity) {
+				String req2 = "UPDATE ItemInfo SET quantity=? WHERE InfoID=? AND colour=?; ";
+				
+				PreparedStatement statement = con.prepareStatement(req2);
+				statement.setInt(1, current_quantity - quantity);
+				statement.setInt(2, infoID);
+				statement.setString(3, colour);
+				statement.executeUpdate();
+			}else {
+				throw new quantityException("Quantity remaining is " + current_quantity);
+			}
+			
+
 
 		} catch (Exception e) {
 			System.out.println(e);

@@ -76,6 +76,7 @@ public class MyResource {
 
 		if (flag == 0) {
 			c.addProduct(iID, colour, quantity);
+			MyRepo.updateItemQuantity(quantity, iID, colour);
 		}
 
 		return Response.ok("Product with item ID " + iID + " updated.").build();
