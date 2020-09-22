@@ -31,10 +31,10 @@ public class MyResource {
 	private String queryParamExample;
 
 	@GET
-	@Path("/createCard")
-	public Response createCard(@QueryParam("client") int client) {
-		System.out.println("Client "+ client);
-		Card c = new Card(client);
+	@Path("client/{id}/createCard")
+	public Response createCard(@PathParam("cID") int cID) {
+		System.out.println("Client "+ cID);
+		Card c = new Card(cID);
 		TempStore.addCard(c);
 		return Response.ok("Card created with ID: " + c.getOrderID() + "!").build();
 	}
@@ -48,8 +48,8 @@ public class MyResource {
 	}
 
 	@GET
-	@Path("/updateCard")
-	public Response getDBStatus() throws Exception {
+	@Path("client/{cid}/updateCard/{oID}")
+	public Response updateCard(@PathParam("cID") int cID, @PathParam("oID") int oID) throws Exception {
 
 		MyRepo mr = new MyRepo();
 		ArrayList<String> answer = mr.fetchData();

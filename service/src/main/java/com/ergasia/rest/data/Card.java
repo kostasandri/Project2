@@ -22,7 +22,6 @@ public class Card {
 		this.ClientID=ClientID;
 		this.setOrderID(MyRepo.getOrdersTotalRows() + 1);
 		products = new ArrayList<Product>();
-		//MyRepo.createEmptyCard(OrderID, ClientID);
 	}
 
 	public void addProduct(int itemID, String colour) {
