@@ -58,7 +58,7 @@ public class MyResource {
 																		// iparxei simainei na einai idios kwdikos kai
 																		// idio xrwma
 				if (quantity == 0) {
-					c.removeProduct(iID);
+					c.removeProduct(iID,colour);
 					flag = 1;
 					break;
 				} else {

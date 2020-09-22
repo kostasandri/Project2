@@ -34,10 +34,10 @@ public class Card {
 		products.add(new Product(itemID, colour, quantity));
 	}
 
-	public void removeProduct(int itemID) {
+	public void removeProduct(int itemID, String colour) {
 		int counter = 0;
 		for (Product p : products) {
-			if (p.getItemID() == itemID) {
+			if (p.getItemID() == itemID && p.getColour().equals(colour)) {
 				products.remove(counter);
 				break;
 			}
