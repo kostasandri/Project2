@@ -63,6 +63,7 @@ public class MyResource {
 																		// idio xrwma
 				if (quantity == 0) {
 					c.removeProduct(iID,colour);
+					MyRepo.updateItemQuantity(p.getQuantity(),quantity, iID, colour);
 					flag = 1;
 					break;
 				} else {
