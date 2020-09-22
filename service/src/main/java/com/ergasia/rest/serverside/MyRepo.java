@@ -90,7 +90,7 @@ public class MyRepo {
 	public static boolean updateItemQuantity(int currentItemQuantity, int quantity, int itemID, String colour) {
 		try {
 			
-			String req1 = "SELECT LeftQuantity FROM ItemInfo WHERE InfoID=? AND colour=? ;";
+			String req1 = "SELECT LQuantity FROM ItemInfo WHERE InfoID=? AND colour=? ;";
 			PreparedStatement st1 = con.prepareStatement(req1);
 			st1.setInt(1, itemID);
 			st1.setNString(2, colour);
@@ -99,7 +99,7 @@ public class MyRepo {
 			int current_quantity = Integer.parseInt(result.getString(1));
 
 			if (current_quantity >= quantity && current_quantity>=quantity) {
-				String req2 = "UPDATE ItemInfo SET LeftQuantity=? WHERE InfoID=? AND colour=?; ";
+				String req2 = "UPDATE ItemInfo SET LQuantity=? WHERE InfoID=? AND colour=?; ";
 
 				PreparedStatement statement = con.prepareStatement(req2);
 				if(currentItemQuantity==0) {
