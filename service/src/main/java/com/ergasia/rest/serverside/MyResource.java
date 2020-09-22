@@ -50,6 +50,10 @@ public class MyResource {
 	public Response updateCard(@PathParam("iID") int iID, @PathParam("oID") int oID,
 			@QueryParam("colour") String colour, @QueryParam("quantity") int quantity) throws Exception {
 
+		if(logger.isDebugEnabled()) {
+			logger.debug("Order id " +oID+ ", itemID "+ iID+ ", colour " +colour+ ", quantity " + quantity);
+		}
+		
 		int flag = 0; // flag gia to ean iparxei i oxi to proion
 
 		Card c = TempStore.getCard(oID);

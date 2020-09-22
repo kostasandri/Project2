@@ -90,6 +90,7 @@ public class MyRepo {
 			statement.setInt(1, quantity);
 			statement.setInt(2, infoID);
 			statement.setString(3, colour);
+			System.out.println(statement);
 			statement.execute();
 
 		} catch (Exception e) {
