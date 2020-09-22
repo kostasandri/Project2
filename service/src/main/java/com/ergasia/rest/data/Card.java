@@ -13,15 +13,17 @@ public class Card {
 	private int OrderID;
 	private int ClientID;
 	private List<Product> products;
-	private static int totalCards;
+	private static int totalCards=0;
 	
 	public Card() {
 		
 	}
 
-	public Card(int ClientID, int OrderID) {
+	public Card(int ClientID) {
+		setTotalCards(totalCards + MyRepo.getOrdersTotalRows()+1);
+		
 		this.ClientID=ClientID;
-		this.setOrderID(OrderID);
+		this.setOrderID(getTotalCards());
 		products = new ArrayList<Product>();
 	}
 
