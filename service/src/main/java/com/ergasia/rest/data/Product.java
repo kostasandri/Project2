@@ -7,13 +7,15 @@ public class Product {
 
 	private int itemID;
 	private String colour;
+	private int quantity;
 
 	public Product() {
 	}
 
-	public Product(int itemID, String colour) {
+	public Product(int itemID, String colour, int quantity) {
 		this.itemID = itemID;
 		this.colour = colour;
+		this.quantity = quantity;
 	}
 
 	public int getItemID() {
@@ -30,6 +32,14 @@ public class Product {
 
 	public void setColour(String colour) {
 		this.colour = colour;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 }

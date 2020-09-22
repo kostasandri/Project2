@@ -24,8 +24,8 @@ public class Card {
 		products = new ArrayList<Product>();
 	}
 
-	public void addProduct(int itemID, String colour) {
-		products.add(new Product(itemID, colour));
+	public void addProduct(int itemID, String colour, int quantity) {
+		products.add(new Product(itemID, colour, quantity));
 	}
 
 	public int getOrderID() {

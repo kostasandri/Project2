@@ -27,8 +27,6 @@ import com.ergasia.rest.data.TempStore;
 public class MyResource {
 
 	Logger logger = LogManager.getLogger(MyResource.class);
-	@QueryParam("query")
-	private String queryParamExample;
 
 	@GET
 	@Path("client/{id}/createCard")
@@ -48,14 +46,12 @@ public class MyResource {
 	}
 
 	@GET
-	@Path("client/{cid}/updateCard/{oID}")
-	public Response updateCard(@PathParam("cID") int cID, @PathParam("oID") int oID) throws Exception {
+	@Path("/updateCard/{oID}/item/{iID}")
+	public Response updateCard(@PathParam("iID") int iID, @PathParam("oID") int oID, @QueryParam("colour") String colour, @QueryParam("quantity") int quantity) throws Exception {
 
-		MyRepo mr = new MyRepo();
-		ArrayList<String> answer = mr.fetchData();
-		for (String dd : answer) {
-			System.out.println(dd);
-		}
-		return Response.ok(answer.get(0) + " +++ " + answer.get(1)).build();
+		Card c = TempStore.getCard(oID);
+		c.addProduct(iID, colour, quantity);
+
+		return Response.ok("Product with item ID " + iID + " added.").build();
 	}
 }
