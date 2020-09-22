@@ -35,7 +35,6 @@ public class MyResource {
 	public Response createCard(@QueryParam("client") int client) {
 		System.out.println("Client "+ client);
 		Card c = new Card(client);
-		c.addProduct(65, "kokkino");
 		TempStore.addCard(c);
 		return Response.ok("Card created with ID: " + c.getOrderID() + "!").build();
 	}
