@@ -54,11 +54,19 @@ public class MyResource {
 
 		Card c = TempStore.getCard(oID);
 		for (Product p : c.getProducts()) {
-			if (p.getItemID() == iID && p.getColour().equals(colour)) { // ean to proion iparxei idi stin karta. iparxei
-																		// simainei na einai idios kwdikos kai idio
-																		// xrwma
-				p.setQuantity(p.getQuantity() + quantity);
-				flag = 1;
+			if (p.getItemID() == iID && p.getColour().equals(colour)) { // ean to proion iparxei idi stin karta.
+																		// iparxei simainei na einai idios kwdikos kai
+																		// idio xrwma
+				if (quantity == 0) {
+					c.removeProduct(iID);
+					flag = 1;
+					break;
+				} else {
+					p.setQuantity(quantity);
+					flag = 1;
+					break;
+				}
+				
 			}
 		}
 
@@ -66,6 +74,6 @@ public class MyResource {
 			c.addProduct(iID, colour, quantity);
 		}
 
-		return Response.ok("Product with item ID " + iID + " added.").build();
+		return Response.ok("Product with item ID " + iID + " updated.").build();
 	}
 }

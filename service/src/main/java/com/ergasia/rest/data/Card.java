@@ -23,7 +23,7 @@ public class Card {
 		if (getTotalCards() == 0)
 			setTotalCards(MyRepo.getOrdersTotalRows() + 1);
 		else
-			setTotalCards(getTotalCards()+1);
+			setTotalCards(getTotalCards() + 1);
 
 		this.ClientID = ClientID;
 		this.setOrderID(getTotalCards());
@@ -32,6 +32,16 @@ public class Card {
 
 	public void addProduct(int itemID, String colour, int quantity) {
 		products.add(new Product(itemID, colour, quantity));
+	}
+
+	public void removeProduct(int itemID) {
+		int counter = 0;
+		for (Product p : products) {
+			if (p.getItemID() == itemID) {
+				products.remove(counter);
+			}
+			counter++;
+		}
 	}
 
 	public int getOrderID() {
