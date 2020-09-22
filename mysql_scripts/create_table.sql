@@ -3,13 +3,6 @@ GRANT ALL ON Project2.* TO 'Lazaros'@'%';
 
 USE Project2;
 
-CREATE TABLE SumOrder
-(
-    OrderNumber INT NOT NULL,
-    ItemID INT NOT NULL,
-    PRIMARY KEY (OrderNumber, ItemID)
-);
-
 CREATE TABLE Clients
 (
     ClientID INT NOT NULL AUTO_INCREMENT,
@@ -22,17 +15,24 @@ CREATE TABLE Clients
 CREATE TABLE Orders
 (
     OrderID INT(6) NOT NULL AUTO_INCREMENT,
-    OrderNumber INT(6) NOT NULL,
     ClientID int,
     PRIMARY KEY (OrderID),
-    FOREIGN KEY (ClientID) REFERENCES Clients(ClientID),
-    FOREIGN KEY (OrderNumber) REFERENCES SumOrder(OrderNumber)
+    FOREIGN KEY (ClientID) REFERENCES Clients(ClientID)
+);
+
+CREATE TABLE SumOrder
+(
+    OrderID INT NOT NULL,
+    ItemID INT NOT NULL,
+    Quantity INT,
+    PRIMARY KEY (OrderID, ItemID),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 );
 
 CREATE TABLE ItemInfo
 (
     InfoID INT NOT NULL ,
-    quantity INT NOT NULL,
+    LeftQuantity INT NOT NULL,
     colour VARCHAR(30) NOT NULL,
     PRIMARY KEY (InfoID, colour)
 );
