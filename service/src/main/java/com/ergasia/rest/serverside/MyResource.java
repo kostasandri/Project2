@@ -50,10 +50,12 @@ public class MyResource {
 	public Response updateCard(@PathParam("iID") int iID, @PathParam("oID") int oID,
 			@QueryParam("colour") String colour, @QueryParam("quantity") int quantity) throws Exception {
 
-		if(logger.isDebugEnabled()) {
-			logger.debug("Order id " +oID+ ", itemID "+ iID+ ", colour " +colour+ ", quantity " + quantity);
+		boolean executed;
+
+		if (logger.isDebugEnabled()) {
+			logger.debug("Order id " + oID + ", itemID " + iID + ", colour " + colour + ", quantity " + quantity);
 		}
-		
+
 		int flag = 0; // flag gia to ean iparxei i oxi to proion
 
 		Card c = TempStore.getCard(oID);
@@ -62,22 +64,29 @@ public class MyResource {
 																		// iparxei simainei na einai idios kwdikos kai
 																		// idio xrwma
 				if (quantity == 0) {
-					c.removeProduct(iID,colour);
-					MyRepo.updateItemQuantity(p.getQuantity(),quantity, iID, colour);
+					c.removeProduct(iID, colour);
+					MyRepo.updateItemQuantity(p.getQuantity(), quantity, iID, colour);
 					flag = 1;
 					break;
 				} else {
-					MyRepo.updateItemQuantity(p.getQuantity(),quantity, iID, colour);
-					p.setQuantity(quantity);
+					executed = MyRepo.updateItemQuantity(p.getQuantity(), quantity, iID, colour);
+					if (executed) {
+						p.setQuantity(quantity);
+					}
 					flag = 1;
 					break;
-				}				
+				}
 			}
 		}
 
 		if (flag == 0) {
-			c.addProduct(iID, colour, quantity);
-			MyRepo.updateItemQuantity(0 ,quantity, iID, colour);
+
+			executed = MyRepo.updateItemQuantity(0, quantity, iID, colour);
+			if (executed) {
+				c.addProduct(iID, colour, quantity);
+			} else {
+				logger.info("Quantity remaining is " + quantity);
+			}
 		}
 
 		return Response.ok("Product with item ID " + iID + " updated.").build();

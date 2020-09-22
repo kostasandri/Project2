@@ -86,7 +86,7 @@ public class MyRepo {
 		return null;
 	}
 
-	public static void updateItemQuantity(int currentItemQuantity, int quantity, int itemID, String colour) {
+	public static boolean updateItemQuantity(int currentItemQuantity, int quantity, int itemID, String colour) {
 		try {
 
 			String req1 = "SELECT quantity FROM ItemInfo WHERE InfoID=? AND colour=? ;";
@@ -117,6 +117,7 @@ public class MyRepo {
 				statement.setInt(2, itemID);
 				statement.setString(3, colour);
 				statement.executeUpdate();
+				return true;
 			} else {
 				throw new quantityException("Quantity remaining is " + current_quantity);
 			}
@@ -124,6 +125,7 @@ public class MyRepo {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		return false;
 	}
 
 	public static void createEmptyCard(int oID, int cID) { // order ID, client ID
