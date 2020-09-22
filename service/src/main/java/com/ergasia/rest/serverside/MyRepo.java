@@ -91,6 +91,7 @@ public class MyRepo {
 		try {
 			
 			String req1 = "SELECT LQuantity FROM ItemInfo WHERE InfoID=? AND colour=? ;";
+			System.out.println(req1);
 			PreparedStatement st1 = con.prepareStatement(req1);
 			st1.setInt(1, itemID);
 			st1.setNString(2, colour);
@@ -100,6 +101,7 @@ public class MyRepo {
 
 			if (current_quantity >= quantity && current_quantity>=quantity) {
 				String req2 = "UPDATE ItemInfo SET LQuantity=? WHERE InfoID=? AND colour=?; ";
+				System.out.println(req2);
 
 				PreparedStatement statement = con.prepareStatement(req2);
 				if(currentItemQuantity==0) {
@@ -111,7 +113,7 @@ public class MyRepo {
 						statement.setInt(1, current_quantity + (quantity - currentItemQuantity));
 					}
 					else {
-						statement.setInt(1, current_quantity);
+						statement.setInt(1, current_quantity); 
 					}
 				}
 				
