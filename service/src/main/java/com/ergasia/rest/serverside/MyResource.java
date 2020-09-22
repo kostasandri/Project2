@@ -66,8 +66,6 @@ public class MyResource {
 			c.addProduct(iID, colour, quantity);
 		}
 
-		c.addProduct(iID, colour, quantity);
-
 		return Response.ok("Product with item ID " + iID + " added.").build();
 	}
 }
