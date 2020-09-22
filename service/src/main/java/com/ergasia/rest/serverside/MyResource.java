@@ -29,9 +29,8 @@ public class MyResource {
 	Logger logger = LogManager.getLogger(MyResource.class);
 
 	@GET
-	@Path("client/{id}/createCard")
+	@Path("client/{cid}/createCard")
 	public Response createCard(@PathParam("cID") int cID) {
-		System.out.println("Client "+ cID);
 		Card c = new Card(cID);
 		TempStore.addCard(c);
 		return Response.ok("Card created with ID: " + c.getOrderID() + "!").build();
