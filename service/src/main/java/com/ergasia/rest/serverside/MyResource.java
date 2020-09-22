@@ -31,7 +31,9 @@ public class MyResource {
 	@GET
 	@Path("client/{cid}/createCard")
 	public Response createCard(@PathParam("cID") int cID) {
-		Card c = new Card(cID);
+		int totalCardsInDB = MyRepo.getOrdersTotalRows() + 1;
+		Card.setTotalCards(totalCardsInDB++);
+		Card c = new Card(cID, totalCardsInDB);
 		TempStore.addCard(c);
 		return Response.ok("Card created with ID: " + c.getOrderID() + "!").build();
 	}

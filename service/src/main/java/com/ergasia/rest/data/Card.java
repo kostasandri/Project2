@@ -13,16 +13,15 @@ public class Card {
 	private int OrderID;
 	private int ClientID;
 	private List<Product> products;
-	private static int totalCards = MyRepo.getOrdersTotalRows() + 1;
+	private static int totalCards;
 	
 	public Card() {
 		
 	}
 
-	public Card(int ClientID) {
+	public Card(int ClientID, int OrderID) {
 		this.ClientID=ClientID;
-		totalCards = totalCards++;
-		this.setOrderID(totalCards);
+		this.setOrderID(OrderID);
 		products = new ArrayList<Product>();
 	}
 
@@ -52,6 +51,14 @@ public class Card {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+
+	public static int getTotalCards() {
+		return totalCards;
+	}
+
+	public static void setTotalCards(int totalCards) {
+		Card.totalCards = totalCards;
 	}
 	
 }
