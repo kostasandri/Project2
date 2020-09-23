@@ -107,7 +107,7 @@ public class MyResource {
 		TempStore.getCard(oID).reset();
 		return TempStore.getCard(oID);
 	}
-	
+		
 	@GET
 	@Path("/history")
 	@Produces(MediaType.APPLICATION_XML)

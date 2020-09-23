@@ -83,5 +83,4 @@ public class Card {
 		}
 		products.clear();
 	}
-
 }
