@@ -60,7 +60,7 @@ public class ClientRequest {
 	private void updateCard(int oID, int iID, String colour, int quantity) {			// orderID, itemID
 		// client.register(feature); // assigns credentials to client
 
-		WebTarget target = client.target(uri + "updateCard/{oID}/item/{iID}?colour={colour}&quantity={quantity}");
+		WebTarget target = client.target(uri + "updateCard/"+ oID +"/item/"+ iID +"?colour="+colour+"&quantity="+quantity);
 
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
 		Response response = builder.get();
