@@ -142,7 +142,7 @@ public class MyRepo {
 				System.out.println(result.getString("ClientID"));
 				c.setOrderID(result.getInt("OrderID"));
 				c.setClientID(result.getInt("ClientID"));
-				c.addProduct(result.getInt("ItemID"), result.getString("colour"), result.getInt("quantity"));
+				c.addProduct(result.getInt("ItemID"), result.getString("colour"), result.getInt("Quantity"));
 				cards.add(c);
 			}
 
