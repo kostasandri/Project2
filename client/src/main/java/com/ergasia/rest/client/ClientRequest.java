@@ -96,7 +96,7 @@ public class ClientRequest {
 		WebTarget target = client.target(uri + "history");
 
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
-		Response response = builder.get();
+		Response response = builder.accept(MediaType.APPLICATION_XML).get();
 
 		System.out.println(response.readEntity(String.class));
 		System.out.println(response);
