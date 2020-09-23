@@ -68,28 +68,9 @@ public class MyRepo {
 		return null;
 	}
 
-	public ArrayList<String> fetchItem() throws Exception {
-		try {
-			String req = "SELECT Firstname, Lastname FROM Clients";
-			PreparedStatement statement = con.prepareStatement(req);
-			ResultSet result = statement.executeQuery();
-			ArrayList<String> array = new ArrayList<String>();
-			while (result.next()) {
-				System.out.println(result.getString("Firstname"));
-				array.add(result.getString("Firstname"));
-				array.add(result.getString("Lastname"));
-			}
-			return array;
-
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return null;
-	}
-
 	public static boolean updateItemQuantity(int currentItemQuantity, int quantity, int itemID, String colour) {
 		try {
-			
+
 			String req1 = "SELECT LQuantity FROM ItemInfo WHERE InfoID=? AND colour=? ;";
 			System.out.println(req1);
 			PreparedStatement st1 = con.prepareStatement(req1);
@@ -99,24 +80,24 @@ public class MyRepo {
 			result.next();
 			int current_quantity = Integer.parseInt(result.getString(1));
 
-			if (current_quantity >= quantity && current_quantity>=quantity) {
+			if (current_quantity >= quantity && current_quantity >= quantity) {
 				String req2 = "UPDATE ItemInfo SET LQuantity=? WHERE InfoID=? AND colour=?; ";
-				System.out.println("req 2 "+ req2);
+				System.out.println("req 2 " + req2);
 
 				PreparedStatement statement = con.prepareStatement(req2);
-				if(currentItemQuantity==0) {
+				if (currentItemQuantity == 0) {
 					statement.setInt(1, current_quantity - quantity);
-				}else {
-					if(currentItemQuantity > quantity) { // currentItemQuantity -> posotita antikeimenoi stin karta, quantity -> ti posotita thelw na valw
+				} else {
+					if (currentItemQuantity > quantity) { // currentItemQuantity -> posotita antikeimenoi stin karta,
+															// quantity -> ti posotita thelw na valw
 						statement.setInt(1, current_quantity - (quantity - currentItemQuantity));
-					}else if(currentItemQuantity < quantity) {
+					} else if (currentItemQuantity < quantity) {
 						statement.setInt(1, current_quantity + (quantity - currentItemQuantity));
-					}
-					else {
-						statement.setInt(1, current_quantity); 
+					} else {
+						statement.setInt(1, current_quantity);
 					}
 				}
-				
+
 				statement.setInt(2, itemID);
 				statement.setString(3, colour);
 				statement.executeUpdate();
@@ -147,7 +128,29 @@ public class MyRepo {
 	}
 
 	public static List<Card> getHistory() {
+		List<Card> cards = new ArrayList<Card>();
 
-		return null;
+		String req = "SELECT Orders.OrderID, Clients.ClientID, Items.ItemID, ItemInfo.colour, SumOrder.Quantity FROM Orders, Clients, SumOrder, Items, ItemInfo  WHERE SumOrder.OrderID=Orders.OrderID AND Clients.ClientID=Orders.ClientID AND Items.ItemID=SumOrder.ItemID AND Items.ItemInfo=ItemInfo.InfoID;";
+
+		PreparedStatement statement;
+		try {
+			statement = con.prepareStatement(req);
+			ResultSet result = statement.executeQuery();
+
+			while (result.next()) {
+				Card c = new Card();
+				System.out.println(result.getString("Firstname"));
+				c.setOrderID(result.getInt("OrderID"));
+				c.setClientID(result.getInt("ClientID"));
+				c.addProduct(result.getInt("ItemID"), result.getString("colour"), result.getInt("quantity"));
+				cards.add(c);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return cards;
 	}
 }
