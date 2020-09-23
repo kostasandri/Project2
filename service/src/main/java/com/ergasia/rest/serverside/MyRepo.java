@@ -131,7 +131,7 @@ public class MyRepo {
 		
 
 		String req = "SELECT Orders.OrderID, Clients.ClientID, Items.ItemID, ItemInfo.colour, SumOrder.Quantity FROM Orders, Clients, SumOrder, Items, ItemInfo  WHERE SumOrder.OrderID=Orders.OrderID AND Clients.ClientID=Orders.ClientID AND Items.ItemID=SumOrder.ItemID AND Items.ItemInfo=ItemInfo.InfoID;";
-		Card c;
+		Card c = null;
 		List<Card> cards = null;
 		try {
 			cards = new ArrayList<Card>();
@@ -145,10 +145,15 @@ public class MyRepo {
 				System.out.println(result.getString("ClientID") + "#4");
 				
 				c = new Card();		
+				System.out.println("ep1");
 				c.setOrderID(result.getInt("OrderID"));
+				System.out.println("ep2");
 				c.setClientID(result.getInt("ClientID"));
+				System.out.println("ep3");
 				c.addProduct(result.getInt("ItemID"), result.getString("colour"), result.getInt("Quantity"));
+				System.out.println("ep4");
 				cards.add(c);
+				System.out.println("ep5");
 			}
 			
 		} catch (SQLException e) {
