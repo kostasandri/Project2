@@ -128,13 +128,14 @@ public class MyRepo {
 	}
 
 	public static List<Card> getHistory() {
-		List<Card> cards = new ArrayList<Card>();
+		
 
 		String req = "SELECT Orders.OrderID, Clients.ClientID, Items.ItemID, ItemInfo.colour, SumOrder.Quantity FROM Orders, Clients, SumOrder, Items, ItemInfo  WHERE SumOrder.OrderID=Orders.OrderID AND Clients.ClientID=Orders.ClientID AND Items.ItemID=SumOrder.ItemID AND Items.ItemInfo=ItemInfo.InfoID;";
 
-		PreparedStatement statement;
+
 		try {
-			statement = con.prepareStatement(req);
+			List<Card> cards = new ArrayList<Card>();
+			PreparedStatement statement = con.prepareStatement(req);
 			ResultSet result = statement.executeQuery();
 
 			while (result.next()) {
@@ -149,12 +150,12 @@ public class MyRepo {
 				c.addProduct(result.getInt("ItemID"), result.getString("colour"), result.getInt("Quantity"));
 				cards.add(c);
 			}
-			return cards;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return null;
+		return cards;
 	}
 }
