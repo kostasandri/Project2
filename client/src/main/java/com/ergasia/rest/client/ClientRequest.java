@@ -72,7 +72,7 @@ public class ClientRequest {
 
 
 	private void readCard(int oID) {
-		WebTarget target = client.target(uri + "getCard/{oID}");
+		WebTarget target = client.target(uri + "getCard/"+ oID);
 
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
 		Response response = builder.get();
