@@ -138,6 +138,9 @@ public class MyRepo {
 			ResultSet result = statement.executeQuery();
 
 			while (result.next()) {
+				System.out.println(result.getInt("ItemID"));
+				System.out.println(result.getInt("Quantity"));
+				System.out.println(result.getString("colour"));
 				Card c = new Card();
 				System.out.println(result.getString("ClientID"));
 				c.setOrderID(result.getInt("OrderID"));
