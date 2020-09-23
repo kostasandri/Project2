@@ -16,7 +16,7 @@ public class Card {
 	private static int totalCards = 0;
 
 	public Card() {
-
+		products = new ArrayList<Product>();
 	}
 
 	public Card(int ClientID) {
