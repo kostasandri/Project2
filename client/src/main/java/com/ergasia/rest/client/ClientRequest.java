@@ -77,7 +77,7 @@ public class ClientRequest {
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
 		Response response = builder.accept(MediaType.APPLICATION_XML).get();
 
-		System.out.println(response);
+		System.out.println(response.getEntity());
 
 	}
 	
