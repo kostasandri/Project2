@@ -9,9 +9,7 @@ services:
                 networks: 
                         - backend
         service:
-                build:
-                        dockerfile: Dockerfile_service
-                        context: $JENKINS_HOME/workspace/Project2/
+                image: lazaros7sar/project_2:service
                 container_name: service
                 depends_on:
                         - mysql
