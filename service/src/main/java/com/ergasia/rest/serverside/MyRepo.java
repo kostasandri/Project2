@@ -132,7 +132,7 @@ public class MyRepo {
 
 		String req = "SELECT Orders.OrderID, Clients.ClientID, Items.ItemID, ItemInfo.colour, SumOrder.Quantity FROM Orders, Clients, SumOrder, Items, ItemInfo  WHERE SumOrder.OrderID=Orders.OrderID AND Clients.ClientID=Orders.ClientID AND Items.ItemID=SumOrder.ItemID AND Items.ItemInfo=ItemInfo.InfoID;";
 		Card c;
-		List<Card>  cards;
+		List<Card> cards = null;
 		try {
 			cards = new ArrayList<Card>();
 			PreparedStatement statement = con.prepareStatement(req);
