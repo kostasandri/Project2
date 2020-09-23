@@ -131,10 +131,10 @@ public class MyRepo {
 		
 
 		String req = "SELECT Orders.OrderID, Clients.ClientID, Items.ItemID, ItemInfo.colour, SumOrder.Quantity FROM Orders, Clients, SumOrder, Items, ItemInfo  WHERE SumOrder.OrderID=Orders.OrderID AND Clients.ClientID=Orders.ClientID AND Items.ItemID=SumOrder.ItemID AND Items.ItemInfo=ItemInfo.InfoID;";
-
-
+		Card c;
+		List<Card>  cards;
 		try {
-			List<Card> cards = new ArrayList<Card>();
+			cards = new ArrayList<Card>();
 			PreparedStatement statement = con.prepareStatement(req);
 			ResultSet result = statement.executeQuery();
 
@@ -144,7 +144,7 @@ public class MyRepo {
 				System.out.println(result.getString("colour") + "#3");
 				System.out.println(result.getString("ClientID") + "#4");
 				
-				Card c = new Card();		
+				c = new Card();		
 				c.setOrderID(result.getInt("OrderID"));
 				c.setClientID(result.getInt("ClientID"));
 				c.addProduct(result.getInt("ItemID"), result.getString("colour"), result.getInt("Quantity"));
