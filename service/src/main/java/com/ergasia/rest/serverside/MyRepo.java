@@ -139,7 +139,7 @@ public class MyRepo {
 
 			while (result.next()) {
 				Card c = new Card();
-				System.out.println(result.getString("Firstname"));
+				System.out.println(result.getString("ClientID"));
 				c.setOrderID(result.getInt("OrderID"));
 				c.setClientID(result.getInt("ClientID"));
 				c.addProduct(result.getInt("ItemID"), result.getString("colour"), result.getInt("quantity"));
