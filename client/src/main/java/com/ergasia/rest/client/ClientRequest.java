@@ -47,7 +47,6 @@ public class ClientRequest {
 		// Response response = target.request().get();
 
 		System.out.println(response.readEntity(String.class));
-		System.out.println(response);
 
 		/*
 		 * Response response = target.request().get();
@@ -65,7 +64,7 @@ public class ClientRequest {
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
 		Response response = builder.get();
 
-		System.out.println(response);
+		System.out.println(response.readEntity(String.class));
 
 	}
 
@@ -76,7 +75,7 @@ public class ClientRequest {
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
 		Response response = builder.accept(MediaType.APPLICATION_XML).get();
 
-		System.out.println(response);
+		System.out.println(response.readEntity(String.class));
 
 	}
 	
@@ -86,7 +85,7 @@ public class ClientRequest {
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
 		Response response = builder.accept(MediaType.APPLICATION_XML).get();
 
-		System.out.println(response);
+		System.out.println(response.readEntity(String.class));
 		
 	}
 	
@@ -96,7 +95,7 @@ public class ClientRequest {
 		Invocation.Builder builder = target.request(MediaType.TEXT_PLAIN_TYPE);
 		Response response = builder.accept(MediaType.APPLICATION_XML).get();
 
-		System.out.println(response);		
+		System.out.println(response.readEntity(String.class));	
 		
 	}
 
