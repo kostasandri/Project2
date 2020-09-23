@@ -3,4 +3,3 @@ WORKDIR /home
 COPY client/client.properties /home/properties/
 COPY client/target/client-0.0.1-jar-with-dependencies.jar /home/client-0.0.1-jar-with-dependencies.jar
 CMD ["java","-jar","/home/client-0.0.1-jar-with-dependencies.jar"]
-EXPOSE 8888
