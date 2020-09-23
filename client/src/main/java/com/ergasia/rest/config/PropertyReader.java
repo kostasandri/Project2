@@ -50,7 +50,6 @@ public class PropertyReader {
 
 	private static String retreiveConfig() {
         String propertyFilePath = System.getenv("PATH");
-        System.out.println("Got path: " + propertyFilePath);
                 
         if (propertyFilePath == null)
         {
