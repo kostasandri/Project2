@@ -142,18 +142,19 @@ public class MyRepo {
 				System.out.println(result.getInt("Quantity") + "#2");
 				System.out.println(result.getString("colour") + "#3");
 				System.out.println(result.getString("ClientID") + "#4");
+				
 				Card c = new Card();		
 				c.setOrderID(result.getInt("OrderID"));
 				c.setClientID(result.getInt("ClientID"));
 				c.addProduct(result.getInt("ItemID"), result.getString("colour"), result.getInt("Quantity"));
 				cards.add(c);
 			}
-
+			return cards;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return cards;
+		return null;
 	}
 }

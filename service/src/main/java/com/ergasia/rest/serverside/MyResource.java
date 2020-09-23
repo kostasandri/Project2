@@ -110,7 +110,7 @@ public class MyResource {
 	
 	@GET
 	@Path("/history")
-	@Produces(MediaType.APPLICATION_XML)
+	//@Produces(MediaType.APPLICATION_XML)
 	public List<Card> history(@PathParam("id") int oID) {
 		return MyRepo.getHistory();
 	}
