@@ -18,5 +18,5 @@ Consists of three docker images and two seperate networks(project2_frontend & pr
   2) cd Project2
   3) docker-compose up -d
   4) docker ps - we should check that service and mysql running for at least half a minute
-  5) ./mysql_scripts/db_init.sh - *this should run only the first time as it initializes the database*
+  5) ./mysql_scripts/db_init.sh - **this should run only the first time as it initializes the database**
   6) docker run  --rm  --name client --network project2_frontend lazaros7sar/project_2:client
