@@ -10,7 +10,7 @@ Consists of three docker images and two seperate networks(project2_frontend & pr
   service image uses tomcat to host a .war file  
   belongs to project2_backend & project2_frontend  
 3) Client  
-  client image is a simple jar execution with maven dependencies  
+  client image contains a simple jar with maven dependencies  
   belongs to project2_frontend  
   
   Execution:
