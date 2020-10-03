@@ -8,10 +8,10 @@ Consists of three docker images and two seperate networks(project2_frontend & pr
   belongs to project2_backend  
 2) Service  
   service image uses tomcat to host a .war file  
-  belong to project2_backend & project2_frontend  
+  belongs to project2_backend & project2_frontend  
 3) Client  
-  client image  
-  belong to project2_frontend  
+  client image is a simple jar execution with maven dependencies  
+  belongs to project2_frontend  
   
   Execution:
   1) we have to place the file of project at $HOME directory of a non root user  
