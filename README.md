@@ -13,7 +13,7 @@ Consists of three docker images and two seperate networks(project2_frontend & pr
   client image  
   belong to project2_frontend  
   
-  Execution:  
+  Execution:
   1) we have to place the file of project at $HOME directory of a non root user  
   2) cd Project2  
   3) docker-compose up -d  
