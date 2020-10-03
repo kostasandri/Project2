@@ -3,13 +3,13 @@ Project 2 is a project based on cloud and networking technologies.
 Uses docker, mysql, rest API and JavaEE.
 
 Consists of three docker images and two seperate networks(project2_frontend & project2_backend). 
-1) Mysql\n
+1) Mysql  
   uses mysql-server as base image and has a volume for data saving at /var/lib/mysql
   belongs to project2_backend
-2) Service/n
+2) Service  
   service image uses tomcat to host a .war file
   belong to project2_backend & project2_frontend
-3) client
+3) client  
   client image
   belong to project2_frontend
   
